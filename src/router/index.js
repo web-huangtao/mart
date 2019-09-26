@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const home = r => require.ensure([], () => r(require('@/views/home/index')), 'home')
 const kind = r => require.ensure([], () => r(require('@/views/kind/index')), 'kind')
+const detail = r => require.ensure([], () => r(require('@/views/detail/index')), 'detail')
 const cart = r => require.ensure([], () => r(require('@/views/cart/index')), 'cart')
 const user = r => require.ensure([], () => r(require('@/views/user/index')), 'user')
-const kinds = r => require.ensure([], () => r(require('@/views/kind/index1')), 'kinds')
 
 Vue.use(Router)
 
@@ -38,6 +38,14 @@ export default new Router({
       name: 'kind',
       component: kind,
       meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      component: detail,
+      meta: {
         keepAlive: false
       }
     },
@@ -53,14 +61,6 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: user,
-      meta: {
-        keepAlive: false
-      }
-    },
-    {
-      path: '/kinds',
-      name: 'kinds',
-      component: kinds,
       meta: {
         keepAlive: false
       }

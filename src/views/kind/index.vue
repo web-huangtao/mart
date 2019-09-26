@@ -27,7 +27,7 @@
       infinite-scroll-distance="50"
       class="list"
     >
-      <li class="list-item" v-for="(item, index) in list" :key="index">
+      <li class="list-item" v-for="(item, index) in list" :key="index" @click="toDetail(item.id)">
         <img :src="item.img">
         <p class="list-item-desc">{{ item.desc }}</p>
         <p class="list-item-bottom">
@@ -110,6 +110,7 @@ export default {
         }
       }).catch(err => {
         console.log(err)
+        this.$indicator.close()
         this.$toast('哎呀，出错啦~~~')
       })
     },
@@ -117,6 +118,13 @@ export default {
     search(val) {
       console.log(val)
       document.activeElement.blur()
+    },
+    // 详情
+    toDetail(id) {
+      // this.$router.push(`/detail/${id}`)
+      this.$router.push({
+        name: 'detail', params: { id: id }
+      })
     }
   }
 }

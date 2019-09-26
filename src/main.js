@@ -20,6 +20,8 @@ import FastClick from 'fastclick'
 // import vconsole
 import VConsole from 'vconsole/dist/vconsole.min.js'
 
+import store from '@/store/index.js' // 引入store
+
 // 引入全局自定义组件
 import myComponents from '@/components/index.js'
 Vue.use(myComponents)
@@ -47,6 +49,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
