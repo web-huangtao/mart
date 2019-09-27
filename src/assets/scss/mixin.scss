@@ -1,0 +1,43 @@
+// flex布局
+@mixin flex($direction: column, $justify: space-between, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// border
+@mixin border($localtion: null, $width: 1px, $style: solid, $color: #8d8d8d) {
+  @if ($localtion == null) {
+    border: $width $style $color;
+  } @else {
+    border-#{$localtion}: $width $style $color;
+  }
+}
+
+// 画三角形
+@mixin triangle($width: 10px, $direction: bottom, $color: red) {
+  border: $width solid transparent;
+  @if ($direction == top) { // 上三角
+    border-bottom-color: $color;
+  }
+  @if ($direction == bottom) { // 下三角
+    border-top-color: $color;
+  }
+  @if ($direction == left) { // 左三角
+    border-right-color: $color;
+  }
+  @if ($direction == right) { // 右三角
+    border-left-color: $color;
+  }
+}
+
+// 蒙层
+@mixin model {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .3);
+  position: fixed;
+  left: 0;
+  top: 0;
+}

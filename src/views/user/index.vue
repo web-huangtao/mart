@@ -12,11 +12,14 @@
     </div>
     <!-- 底部 -->
     <v-footer />
+    <!-- 蒙层 -->
+    <div class="dialog"></div>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import utils from '@/utils/utils'
 export default {
   data() {
     return {
@@ -24,7 +27,7 @@ export default {
   },
   mounted() {
     console.log('mounted', this.isLogin)
-    console.log(typeof this.isLogin)
+    utils.a()
   },
   computed: {
     ...mapState({
@@ -49,6 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/scss/mixin';
   .container {
     display: flex;
     flex-direction: column;
@@ -63,6 +67,11 @@ export default {
     .main {
       flex: 1;
       padding: 0 10px;
+      // @include border;
+      @include triangle(365px);
+    }
+    .dialog {
+      // @include model;
     }
   }
 </style>
